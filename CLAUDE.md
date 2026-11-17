@@ -35,6 +35,6 @@ la web se vende/entrega a un negocio real, así que la calidad y la honestidad d
 
 ## Probar en local
 ```bash
-cd restaurante-valencia && python3 -m http.server 8000
+cd plantilla-restaurante && python3 -m http.server 8000
 ```
 Abrir http://localhost:8000 y revisar en modo móvil del navegador.
