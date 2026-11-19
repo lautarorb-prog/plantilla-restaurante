@@ -108,6 +108,11 @@ em { font-style: italic; color: var(--accent); }
   background: linear-gradient(180deg, rgba(20,16,12,.55) 0%, rgba(20,16,12,.75) 60%, var(--bg) 100%);
 }
 .hero-inner { position: relative; max-width: 760px; }
+.photo-badge {
+  position: absolute; right: 12px; bottom: 12px; z-index: 1;
+  font-size: .72rem; color: var(--cream-2); background: rgba(20,16,12,.6);
+  padding: 4px 8px; border-radius: 6px;
+}
 .hero-meta {
   display: inline-flex; align-items: center; gap: 8px;
   font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; color: var(--cream-2);
@@ -150,6 +155,16 @@ em { font-style: italic; color: var(--accent); }
 }
 .dishes h3 { font-size: 1.3rem; }
 .dishes p { margin: 4px 0 0; color: var(--muted); font-size: .95rem; }
+/* Platos con foto: foto | texto | precio */
+.dishes li.has-photo { display: grid; grid-template-columns: 80px 1fr auto; align-items: center; gap: 16px; }
+.dish-photo {
+  width: 80px; height: 80px; object-fit: cover; border-radius: 12px;
+  background: var(--bg-3); border: 1px solid var(--line);
+}
+@media (min-width: 761px) {
+  .dishes li.has-photo { grid-template-columns: 112px 1fr auto; }
+  .dish-photo { width: 112px; height: 112px; }
+}
 .price { font-family: var(--serif); font-size: 1.2rem; color: var(--accent); white-space: nowrap; }
 .tag {
   font: 600 .7rem var(--sans); text-transform: uppercase; letter-spacing: .06em;
@@ -167,6 +182,35 @@ em { font-style: italic; color: var(--accent); }
 .menu-dia-cols h4 { font-size: 1.1rem; color: var(--accent); margin-bottom: 8px; }
 .menu-dia-cols ul { margin: 0; padding-left: 18px; color: var(--cream-2); }
 @media (max-width: 760px) { .menu-dia-cols { grid-template-columns: 1fr; } }
+
+/* 6b. Galería: tira deslizable en móvil, rejilla en escritorio */
+.section-gallery { padding-bottom: 88px; }
+.gallery {
+  display: grid; grid-auto-flow: column; grid-auto-columns: 78%;
+  gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
+  padding: 8px 16px 12px; scrollbar-width: none;
+  max-width: var(--wrap); margin: 0 auto;
+}
+.gallery::-webkit-scrollbar { display: none; }
+.gallery figure {
+  position: relative; margin: 0; scroll-snap-align: center;
+  border-radius: var(--radius); overflow: hidden; aspect-ratio: 4 / 5; background: var(--bg-3);
+}
+.gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.gallery figure:hover img { transform: scale(1.05); }
+.gallery figcaption {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 32px 14px 12px;
+  background: linear-gradient(transparent, rgba(20,16,12,.85));
+  font-family: var(--serif); font-size: 1.1rem;
+}
+@media (min-width: 900px) {
+  .gallery {
+    grid-auto-flow: row; grid-template-columns: repeat(6, 1fr); grid-auto-columns: auto;
+    overflow: visible; padding: 8px 16px 0;
+  }
+  .gallery figure { aspect-ratio: auto; height: 300px; grid-column: span 2; }
+  .gallery figure:nth-child(4), .gallery figure:nth-child(5) { grid-column: span 3; }
+}
 
 /* 7. Opiniones */
 .reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -213,6 +257,10 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--accent); ou
 .form-error { color: #ff7a6e; min-height: 1.2em; margin: 0; font-size: .92rem; }
 
 /* 10. Footer + WhatsApp flotante */
+.credits { max-width: 720px; margin: 16px auto 0; font-size: .8rem; color: var(--muted); text-align: left; }
+.credits summary { cursor: pointer; text-align: center; }
+.credits ul { padding-left: 18px; }
+.credits a { color: var(--cream-2); }
 .footer { text-align: center; padding: 48px 16px 96px; border-top: 1px solid var(--line); color: var(--cream-2); }
 .footer p { margin: 4px 0; }
 .wa-float {
