@@ -16,6 +16,10 @@ la web se vende/entrega a un negocio real, así que la calidad y la honestidad d
 - El contenido se escribe **directamente en el HTML** (la web debe leerse aunque falle el JS). El JS solo mejora.
 - **Mobile first**: probar siempre a 375 px de ancho; nada de scroll horizontal; inputs a 16 px (evita zoom en iPhone).
 - Imágenes siempre en WebP, con `alt` descriptivo y `loading="lazy"` salvo la de la cabecera.
+  Tamaños: cabecera ≤1920 px, galería ≤1000 px, fotos de platos 320×320 (recorte cuadrado).
+- Las fotos actuales son **de ejemplo** (bancos libres con licencia CC). Cada una debe figurar en
+  «Créditos de las fotos» del pie (título, autor, licencia y enlace). Si se cambia o quita una foto,
+  actualizar los créditos. Con fotos reales del cliente, los créditos de stock se borran.
 - Animaciones suaves y respetando `prefers-reduced-motion`.
 - Tras cada cambio en CSS/JS, actualizar el `?v=AAAAMMDD` en `index.html`.
 - Accesibilidad: HTML semántico, `aria-*` en pestañas y menú, contraste suficiente.
